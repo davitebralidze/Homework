@@ -1,40 +1,41 @@
 package Pages;
 
-import io.qameta.allure.Step;
-import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LoginPage {
-
     WebDriver driver;
 
-    //elements
-    By logInEmail = By.xpath("//*[@id=\"user-name\"]");
-    By logInPassword = By.xpath("//*[@id=\"password\"]");
-    By logInButton = By.xpath("//*[@id=\"login-button\"]");
-
-    @Step("email input:{0}")
-    public LoginPage enterValidEmail(String validEmail) {
-        driver.findElement(logInEmail).sendKeys(validEmail);
-        return this;
-    }
-    @Step("invalid email input:{0}")
-    public LoginPage enterInvalidEmail(String invalidEmail) {
-        driver.findElement(logInEmail).sendKeys(invalidEmail);
-        return this;
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;
     }
 
-    @Step ("password input:{0}")
-    public LoginPage enterPassword(String password) {
-        driver.findElement(logInPassword).sendKeys(password);
-        return this;
+    private final By emailField = By.xpath("//*[@id=\"user-name\"]");
+    private final By errorMessage = By.xpath("//div[@class='error-message-container error']");
+    private final By passwordField = By.id("password");
+    private final By loginButton = By.name("login-button");
+
+
+    public void fillEmail(String email) {
+        driver.findElement(emailField).sendKeys(email);
     }
 
-    @Step ("click on log in button")
-    public LoginPage clickLogInButton() {
-        driver.findElement(logInButton).click();
-        return this;
+    public void fillPassword(String password) {
+        driver.findElement(passwordField).sendKeys(password);
+    }
+
+    public void clickLoginButton() {
+        driver.findElement(loginButton).click();
+    }
+
+    public boolean checkErrorMessagePresence() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(errorMessage)));
+        return driver.findElement(errorMessage).isDisplayed();
     }
 
 }
