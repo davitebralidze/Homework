@@ -23,7 +23,7 @@ public class LogInPageTest implements LoginPageData {
 
     @Test(priority = 1, description = "Log in case, valid credentials")
     @Severity(SeverityLevel.CRITICAL)
-    public void loginWithValidCredentials() {
+    public void loginWithValidCredentials() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
 

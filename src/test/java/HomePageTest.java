@@ -1,24 +1,18 @@
+import Data.HomePageData;
 import Data.LoginPageData;
-import Data.ProductNameData;
-import Data.SortTypes;
 import Pages.HomePage;
-import com.beust.ah.A;
+import Pages.LoginPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-
-public class HomePageTest implements LoginPageData, ProductNameData, SortTypes {
+public class HomePageTest implements LoginPageData, HomePageData {
 
     WebDriver driver;
 
@@ -28,24 +22,27 @@ public class HomePageTest implements LoginPageData, ProductNameData, SortTypes {
         driver = new ChromeDriver();
         driver.navigate().to(url);
         driver.manage().window().maximize();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.fillEmail(validEmail);
+        loginPage.fillPassword(password);
+        loginPage.clickLoginButton();
     }
 
-    @Test(priority = 1, description = "Does the sort contain every type")
+    @Test(priority = 1, description = "Sort dropdown presence case")
     @Severity(SeverityLevel.NORMAL)
-    public void sortTypes() {
-        Select selectOptions = new Select(driver.findElement(By.className("product_sort_container")));
-        int dropdownSize = selectOptions.getOptions().size();
-        ArrayList <WebElement> sortList = new ArrayList<>();
-
-        for (int i = 0; i < dropdownSize; i++) {
-            selectOptions = new Select(driver.findElement(By.className("product_sort_container")));
-            selectOptions.selectByIndex(i);
-        }
-
-
-
+    public void isSortMenuVisible() {
+        HomePage homePage = new HomePage(driver);
+        Assert.assertTrue(homePage.checkSortDropdownVisibility(), "The sort dropdown bar is not present");
     }
 
+    @Test(priority = 2, description = "Number of elements in the sort dropdown bar")
+    @Severity(SeverityLevel.CRITICAL)
+    public void sortDropdownSizeTest() {
+        HomePage homePage = new HomePage(driver);
+        Assert.assertEquals(homePage.actualSortSize(), expectedNumberOfElementsInSort);
+    }
+
+    //does sort menu have right elements
 
     @AfterMethod
     public void finish() {
