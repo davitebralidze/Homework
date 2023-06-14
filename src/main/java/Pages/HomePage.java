@@ -1,14 +1,17 @@
 package Pages;
 
+import Data.HomePageData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
 
-public class HomePage {
+public class HomePage implements HomePageData {
 
     WebDriver driver;
 
@@ -24,10 +27,6 @@ public class HomePage {
         return selectOptions.getOptions().size();
     }
 
-    public By getSortMenuXPath() {
-        return sortMenuXPath;
-    }
-
     public boolean checkBurgerMenuVisibility() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(burgerMenu)));
@@ -41,5 +40,22 @@ public class HomePage {
 
     }
 
+    public ArrayList<String> getExpectedSortData() {
+        ArrayList<String> sortData = new ArrayList<>();
+        sortData.add(az);
+        sortData.add(za);
+        sortData.add(LoHi);
+        sortData.add(HiLo);
+        return sortData;
+    }
+
+    public ArrayList<String> getActualSortData() {
+        ArrayList<String> actualSortData = new ArrayList<>();
+        for (int i = 0; i < actualSortSize(); i++) {
+            Select sortData = new Select(driver.findElement(sortMenuXPath));
+            actualSortData.add(sortData.getOptions().get(i).getText());
+        }
+        return actualSortData;
+    }
 
 }

@@ -30,7 +30,7 @@ public class HomePageTest implements LoginPageData, HomePageData {
 
     @Test(priority = 1, description = "Sort dropdown presence case")
     @Severity(SeverityLevel.NORMAL)
-    public void isSortMenuVisible() {
+    public void isSortMenuVisibleTest() {
         HomePage homePage = new HomePage(driver);
         Assert.assertTrue(homePage.checkSortDropdownVisibility(), "The sort dropdown bar is not present");
     }
@@ -42,7 +42,13 @@ public class HomePageTest implements LoginPageData, HomePageData {
         Assert.assertEquals(homePage.actualSortSize(), expectedNumberOfElementsInSort);
     }
 
-    //does sort menu have right elements
+    @Test (priority = 3, description = "Elements of the sort dropdown bar")
+    @Severity(SeverityLevel.CRITICAL)
+    public void sortDropdownElementsTest() {
+        HomePage homePage = new HomePage(driver);
+        Assert.assertEquals(homePage.getActualSortData(), homePage.getExpectedSortData());
+    }
+
 
     @AfterMethod
     public void finish() {
