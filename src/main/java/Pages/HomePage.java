@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.BeforeMethod;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -14,7 +15,6 @@ import java.util.ArrayList;
 public class HomePage implements HomePageData {
 
     WebDriver driver;
-
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
