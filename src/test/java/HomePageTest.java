@@ -18,17 +18,13 @@ public class HomePageTest implements LoginPageData, HomePageData {
 
     @BeforeMethod
     public void setup() {
-
-        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.navigate().to(url);
         driver.manage().window().maximize();
-
         LoginPage loginPage = new LoginPage(driver);
         loginPage.fillEmail(validEmail);
         loginPage.fillPassword(password);
         loginPage.clickLoginButton();
-
     }
 
     @Test(priority = 1, description = "Sort dropdown presence case")
@@ -51,7 +47,6 @@ public class HomePageTest implements LoginPageData, HomePageData {
         HomePage homePage = new HomePage(driver);
         Assert.assertEquals(homePage.getActualSortData(), homePage.getExpectedSortData());
     }
-
 
     @AfterMethod
     public void finish() {
