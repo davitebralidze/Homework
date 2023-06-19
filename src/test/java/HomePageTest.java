@@ -2,7 +2,6 @@ import Data.HomePageData;
 import Data.LoginPageData;
 import Pages.HomePage;
 import Pages.LoginPage;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.WebDriver;
@@ -47,6 +46,7 @@ public class HomePageTest implements LoginPageData, HomePageData {
         HomePage homePage = new HomePage(driver);
         Assert.assertEquals(homePage.getActualSortData(), homePage.getExpectedSortData());
     }
+
 
     @AfterMethod
     public void finish() {
