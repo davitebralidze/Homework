@@ -3,11 +3,9 @@ package Pages;
 import Data.HomePageData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.BeforeMethod;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -42,12 +40,12 @@ public class HomePage implements HomePageData {
     }
 
     public ArrayList<String> getExpectedSortData() {
-        ArrayList<String> sortData = new ArrayList<>();
-        sortData.add(az);
-        sortData.add(za);
-        sortData.add(LoHi);
-        sortData.add(HiLo);
-        return sortData;
+        ArrayList<String> sortMenuData = new ArrayList<>();
+        sortMenuData.add(az);
+        sortMenuData.add(za);
+        sortMenuData.add(LoHi);
+        sortMenuData.add(HiLo);
+        return sortMenuData;
     }
 
     public ArrayList<String> getActualSortData() {
