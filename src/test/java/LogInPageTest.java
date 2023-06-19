@@ -2,6 +2,10 @@ import Data.LoginPageData;
 import Pages.HomePage;
 import Pages.LoginPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Description;
+import io.qameta.allure.Link;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -21,7 +25,10 @@ public class LogInPageTest implements LoginPageData {
         driver.manage().window().maximize();
     }
 
-    @Test(priority = 1, description = "Log in case, valid credentials")
+    @Test
+    @Severity(SeverityLevel.BLOCKER)
+    @Description("Logging in with valid credentials")
+    @Link("https://www.saucedemo.com/")
     public void loginWithValidCredentialsTest()  {
 
         LoginPage loginPage = new LoginPage(driver);
@@ -35,7 +42,7 @@ public class LogInPageTest implements LoginPageData {
 
     }
 
-    @Test(priority = 2, description = "Log in case, invalid credentials")
+    @Test
     public void loginWithInvalidCredentialsTest() {
 
         LoginPage loginPage = new LoginPage(driver);

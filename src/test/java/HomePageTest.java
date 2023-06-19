@@ -2,6 +2,9 @@ import Data.HomePageData;
 import Data.LoginPageData;
 import Pages.HomePage;
 import Pages.LoginPage;
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -23,19 +26,19 @@ public class HomePageTest implements LoginPageData, HomePageData {
         loginPage.clickLoginButton();
     }
 
-    @Test(priority = 1, description = "Sort dropdown presence case")
+    @Test
     public void isSortMenuVisibleTest() {
         HomePage homePage = new HomePage(driver);
         Assert.assertTrue(homePage.checkSortDropdownVisibility(), "The sort dropdown bar is not present");
     }
 
-    @Test(priority = 2, description = "Number of elements in the sort dropdown bar")
+    @Test
     public void sortDropdownSizeTest() {
         HomePage homePage = new HomePage(driver);
         Assert.assertEquals(homePage.actualSortSize(), expectedNumberOfElementsInSort);
     }
 
-    @Test(priority = 3, description = "Elements of the sort dropdown bar")
+    @Test
     public void sortDropdownElementsTest() {
         HomePage homePage = new HomePage(driver);
         Assert.assertEquals(homePage.getActualSortData(), homePage.getExpectedSortData());
