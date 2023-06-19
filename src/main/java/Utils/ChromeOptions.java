@@ -19,7 +19,7 @@ public class ChromeOptions {
 
     @AfterMethod
     public void closeChrome() {
-        driver.quit();
+        driver.close();
     }
 
 }
