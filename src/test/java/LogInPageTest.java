@@ -2,12 +2,12 @@ import Data.LoginPageData;
 import Pages.HomePage;
 import Pages.LoginPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 public class LogInPageTest implements LoginPageData {
 
@@ -22,7 +22,6 @@ public class LogInPageTest implements LoginPageData {
     }
 
     @Test(priority = 1, description = "Log in case, valid credentials")
-    @Severity(SeverityLevel.CRITICAL)
     public void loginWithValidCredentialsTest()  {
 
         LoginPage loginPage = new LoginPage(driver);
@@ -37,7 +36,6 @@ public class LogInPageTest implements LoginPageData {
     }
 
     @Test(priority = 2, description = "Log in case, invalid credentials")
-    @Severity(SeverityLevel.CRITICAL)
     public void loginWithInvalidCredentialsTest() {
 
         LoginPage loginPage = new LoginPage(driver);

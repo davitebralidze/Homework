@@ -33,8 +33,8 @@ public class LoginPage {
     }
 
     public boolean checkErrorMessagePresence() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(errorMessage)));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));     /*Explicit wait*/
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(errorMessage)));   /*Explicit wait*/
         return driver.findElement(errorMessage).isDisplayed();
     }
 
