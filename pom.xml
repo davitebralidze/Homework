@@ -11,21 +11,13 @@
     <name>your-project-name</name>
 
     <properties>
-        <maven.compiler.source>3.9.2</maven.compiler.source>
-        <maven.compiler.target>3.9.2</maven.compiler.target>
+        <maven.compiler.source>3.9.3</maven.compiler.source>
+        <maven.compiler.target>3.9.3</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <aspectj.version>1.8.10</aspectj.version>
     </properties>
 
     <dependencies>
-
-        <!-- junit is not necessary when using TestNG-->
-        <!--        <dependency>-->
-        <!--            <groupId>junit</groupId>-->
-        <!--            <artifactId>junit</artifactId>-->
-        <!--            <version>4.13.2</version>-->
-        <!--            <scope>test</scope>-->
-        <!--        </dependency>-->
 
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
@@ -40,16 +32,16 @@
         </dependency>
 
         <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.10.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.8.0</version>
             <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>2.22.1</version>
         </dependency>
 
         <dependency>
