@@ -64,22 +64,6 @@ public class LogInPageTest implements LoginPageData {
         Assert.assertEquals(loginPage.getActualErrorMessageText(), loginPage.getExpectedErrorMessageText());
     }
 
-//    @Test
-//    public void performanceOfLoggingIn() {
-//        LoginPage loginPage = new LoginPage(driver);
-//        HomePage homePage = new HomePage(driver);
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(1));
-//
-//        loginPage.fillEmail(performanceGlitchUser);
-//        loginPage.fillPassword(password);
-//        loginPage.clickLoginButton();
-//
-//
-//        wait.until(ExpectedConditions.visibilityOf(driver.findElement(homePage.getBurgerMenu())));
-//
-//    }
-
-
     @AfterMethod(description = "Closing chrome browser")
     public void finish() {
         driver.quit();
