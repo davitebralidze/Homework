@@ -5,11 +5,12 @@ This project is a test automation suite for testing the website www.saucedemo.co
 **Prerequisites**
 
 Before running the tests, make sure you have the following software installed on your machine:
-Java JDK (Oracle OpenJDK version 20.0.1)
-Maven (version 3.9.3)
-Selenium WebDriver (version 4.10.0)
-TestNG (version 7.8.0)
-Allure Command Line (version 2.22.1)
+
+1) Java JDK (Oracle OpenJDK version 20.0.1)
+2) Maven (version 3.9.3)
+3) Selenium WebDriver (version 4.10.0)
+4) TestNG (version 7.8.0)
+5) Allure Command Line (version 2.22.1)
 
 **Setup and Installation**
 
@@ -30,12 +31,14 @@ After running the tests, navigate to the project root directory and execute the 
 **Test Structure**
 
 The test automation suite is organized as follows:
-src/test/java: Contains the test classes and test data.
-src/main/java: Contains utility classes and common functions.
-src/main/pom.xml: Contains the general configuration
+1) src/test/java: Contains the test classes and test data.
+2) src/main/java: Contains utility classes and common functions.
+3) src/main/pom.xml: Contains the general configuration
 
 **Contact**
 
 For any inquiries or issues, please contact: 
+
                                             email - dav.ebralidze@gmail.com
+                                            
                                             phone - (+995) 579 04 28 72
