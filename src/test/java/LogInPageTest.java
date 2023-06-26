@@ -32,7 +32,7 @@ public class LogInPageTest implements LoginPageData {
     }
 
     @Test
-    public void loginWithValidCredentialsTest() {
+    public void loginWithValidCredentials() {
 
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
