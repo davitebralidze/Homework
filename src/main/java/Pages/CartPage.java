@@ -16,10 +16,6 @@ public class CartPage {
     private final By removeButtonOfSauceLabsBackPackInCart = By.xpath("//*[@id=\"remove-sauce-labs-backpack\"]");
 
 
-    public String getTheTextOfSauceLabsBackPackInCart() {
-        return driver.findElement(sauceLabsBackPackInCart).getText();
-    }
-
     public void clickOnRemoveButtonOfSauceLabsBackPackInCart() {
         driver.findElement(removeButtonOfSauceLabsBackPackInCart).click();
     }

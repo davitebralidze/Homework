@@ -3,6 +3,9 @@ import Data.LoginPageData;
 import Pages.CartPage;
 import Pages.HomePage;
 import Pages.LoginPage;
+import io.qameta.allure.Attachment;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -12,6 +15,11 @@ import org.testng.annotations.Test;
 
 public class HomePageTest implements LoginPageData, HomePageData {
     WebDriver driver;
+
+    @Attachment(value = "Screenshot", type = "image/png")
+    public byte[] takeScreenshot() {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+    }
 
     @BeforeMethod
     public void setup() {
@@ -65,6 +73,7 @@ public class HomePageTest implements LoginPageData, HomePageData {
 
     @AfterMethod
     public void finish() {
+        takeScreenshot();
         driver.quit();
     }
 
