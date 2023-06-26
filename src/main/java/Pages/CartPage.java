@@ -35,7 +35,7 @@ public class CartPage {
     public boolean checkPresenceOfSauceLabsBackPackInCart() {
         try {
             return driver.findElement(sauceLabsBackPackInCart).isDisplayed();
-        } catch (Exception e) {
+        } catch (Exception NoElementFoundException) {
             return false;
         }
     }
