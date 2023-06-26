@@ -2,34 +2,32 @@ import Data.LoginPageData;
 import Pages.HomePage;
 import Pages.LoginPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.qameta.allure.Description;
-import io.qameta.allure.Link;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 public class LogInPageTest implements LoginPageData {
 
     WebDriver driver;
 
-    @BeforeMethod
+    @BeforeMethod(description = "Opening the chrome browser")
     public void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.navigate().to(url);
         driver.manage().window().maximize();
+
     }
 
     @Test
-    @Severity(SeverityLevel.BLOCKER)
-    @Description("Logging in with valid credentials")
-    @Link("https://www.saucedemo.com/")
-    public void loginWithValidCredentialsTest()  {
+    public void loginWithValidCredentialsTest() {
 
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
@@ -43,20 +41,46 @@ public class LogInPageTest implements LoginPageData {
     }
 
     @Test
-    public void loginWithInvalidCredentialsTest() {
+    public void loginWithLockedOutUser() {
 
         LoginPage loginPage = new LoginPage(driver);
 
-        loginPage.fillEmail(invalidEmail);
+        loginPage.fillEmail(lockedOutUser);
         loginPage.fillPassword(password);
         loginPage.clickLoginButton();
 
-        Assert.assertTrue(loginPage.checkErrorMessagePresence(), "The error message did not occur");
-
+        Assert.assertTrue(loginPage.checkErrorMessagePresenceForLockedOutUser(), "The error message did not occur");
 
     }
 
-    @AfterMethod
+    @Test
+    public void checkTheErrorMessageInCaseOfInvalidUser() {
+        LoginPage loginPage = new LoginPage(driver);
+
+        loginPage.fillEmail(nonexistentUser);
+        loginPage.fillPassword(password);
+        loginPage.clickLoginButton();
+
+        Assert.assertEquals(loginPage.getActualErrorMessageText(), loginPage.getExpectedErrorMessageText());
+    }
+
+//    @Test
+//    public void performanceOfLoggingIn() {
+//        LoginPage loginPage = new LoginPage(driver);
+//        HomePage homePage = new HomePage(driver);
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(1));
+//
+//        loginPage.fillEmail(performanceGlitchUser);
+//        loginPage.fillPassword(password);
+//        loginPage.clickLoginButton();
+//
+//
+//        wait.until(ExpectedConditions.visibilityOf(driver.findElement(homePage.getBurgerMenu())));
+//
+//    }
+
+
+    @AfterMethod(description = "Closing chrome browser")
     public void finish() {
         driver.quit();
     }

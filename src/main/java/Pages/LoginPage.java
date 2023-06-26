@@ -18,6 +18,7 @@ public class LoginPage {
     private final By errorMessage = By.xpath("//div[@class='error-message-container error']");
     private final By passwordField = By.id("password");
     private final By loginButton = By.name("login-button");
+    private final String expectedErrorText = "The password, or the email, you’ve entered is incorrect.";
 
 
     public void fillEmail(String email) {
@@ -32,11 +33,26 @@ public class LoginPage {
         driver.findElement(loginButton).click();
     }
 
-    public boolean checkErrorMessagePresence() {
+    public boolean presenceOfLoginButton() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(loginButton)));
+        return driver.findElement(loginButton).isDisplayed();
+    }
+
+    public boolean checkErrorMessagePresenceForLockedOutUser() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));     /*Explicit wait*/
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(errorMessage)));   /*Explicit wait*/
         return driver.findElement(errorMessage).isDisplayed();
     }
 
+    public String getActualErrorMessageText() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));     /*Explicit wait*/
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(errorMessage)));   /*Explicit wait*/
+        return driver.findElement(errorMessage).getText();
+    }
+
+    public String getExpectedErrorMessageText() {
+        return expectedErrorText;
+    }
 
 }

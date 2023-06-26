@@ -5,6 +5,8 @@ public interface LoginPageData {
     String url = "https://www.saucedemo.com/";
     //credentials
     String validEmail = "standard_user";
-    String invalidEmail = "locked_out_user";
+    String lockedOutUser = "locked_out_user";
+    String nonexistentUser = "somerandomnonexistantuser";
+    String performanceGlitchUser = "performance_glitch_user";
     String password = "secret_sauce";
 }

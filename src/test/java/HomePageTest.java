@@ -1,10 +1,8 @@
 import Data.HomePageData;
 import Data.LoginPageData;
+import Pages.CartPage;
 import Pages.HomePage;
 import Pages.LoginPage;
-import io.qameta.allure.Description;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -27,23 +25,43 @@ public class HomePageTest implements LoginPageData, HomePageData {
     }
 
     @Test
-    public void isSortMenuVisibleTest() {
+    public void isSortMenuVisible() {
         HomePage homePage = new HomePage(driver);
         Assert.assertTrue(homePage.checkSortDropdownVisibility(), "The sort dropdown bar is not present");
     }
 
     @Test
-    public void sortDropdownSizeTest() {
+    public void sortDropdownSize() {
         HomePage homePage = new HomePage(driver);
         Assert.assertEquals(homePage.actualSortSize(), expectedNumberOfElementsInSort);
     }
 
     @Test
-    public void sortDropdownElementsTest() {
+    public void sortDropdownElements() {
         HomePage homePage = new HomePage(driver);
         Assert.assertEquals(homePage.getActualSortData(), homePage.getExpectedSortData());
     }
 
+    @Test
+    public void isProductAddedToCart() {
+        HomePage homePage = new HomePage(driver);
+        CartPage cartPage = new CartPage(driver);
+        homePage.addSauceLabsBackPackProductToCart();
+        homePage.clickOnCartIcon();
+
+        Assert.assertEquals(cartPage.getActualNameOfTheProductSauceLabsBackPackInCart(), cartPage.getExpectedNameOfTheProductSauceLabsBackPackInCart());
+
+    }
+
+    @Test
+    public void canUserLogOutFromBurgerMenu() {
+        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+        homePage.clickOnBurgerMenu();
+        homePage.clickOnLogOutFromBurgerMenu();
+
+        Assert.assertTrue(loginPage.presenceOfLoginButton());
+    }
 
     @AfterMethod
     public void finish() {
