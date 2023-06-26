@@ -19,80 +19,9 @@ Install the required dependencies by navigating to the pom.xml file and updating
 
 **Running the tests with TestNG**
 
-You can invoke TestNG with a testng.xml file (right click on it and select the option Run)
+You can invoke the tests with a testng.xml file (right-click on it and select the option Run)
 
-Here is an example testng.xml file:
-
-
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-
-<suite name="Suite1" verbose="1" >
-  <test name="Nopackage" >
-    <classes>
-       <class name="NoPackageTest" />
-    </classes>
-  </test>
-
-  <test name="Regression1">
-    <classes>
-      <class name="test.sample.ParameterSample"/>
-      <class name="test.sample.ParameterTest"/>
-    </classes>
-  </test>
-</suite>
-You can specify package names instead of class names:
-
-
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-
-<suite name="Suite1" verbose="1" >
-  <test name="Regression1"   >
-    <packages>
-      <package name="test.sample" />
-   </packages>
- </test>
-</suite>
-In this example, TestNG will look at all the classes in the package test.sample and will retain only classes that have TestNG annotations.
-
-You can also specify groups and methods to be included and excluded:
-
-
-<test name="Regression1">
-  <groups>
-    <run>
-      <exclude name="brokenTests"  />
-      <include name="checkinTests"  />
-    </run>
-  </groups>
-
-  <classes>
-    <class name="test.IndividualMethodsTest">
-      <methods>
-        <include name="testMethod" />
-      </methods>
-    </class>
-  </classes>
-</test>
-You can also define new groups inside testng.xml and specify additional details in attributes, such as whether to run the tests in parallel, how many threads to use, whether you are running JUnit tests, etc...
-
-By default, TestNG will run your tests in the order they are found in the XML file. If you want the classes and methods listed in this file to be run in an unpredictable order, set the preserve-order attribute to false
-
-
-<test name="Regression1" preserve-order="false">
-  <classes>
-
-    <class name="test.Test1">
-      <methods>
-        <include name="m1" />
-        <include name="m2" />
-      </methods>
-    </class>
-
-    <class name="test.Test2" />
-
-  </classes>
-</test>
-
+For further information about the possibilities of the TestNG read the documentation: https://testng-docs.readthedocs.io/testngxml/
 
 **Generating Allure Report**
 
