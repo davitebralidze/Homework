@@ -16,7 +16,7 @@ Before running the tests, make sure you have the following software installed on
 
 Clone the repository to your local machine using the following command: git clone git@github.com:davitebralidze/Homework.git
 
-Install the required dependencies by navigating to the pom.xml file and updating the Maven project
+Install the required dependencies by navigating to the pom.xml file and updating the Maven project (all the necessary dependency commands are already in the pom.xml file)
 
 **Running the tests with TestNG**
 
