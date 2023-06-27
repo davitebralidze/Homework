@@ -53,7 +53,7 @@ public class LoginPage {
         return driver.findElement(loginButton).isDisplayed();
     }
 
-    @Step("Check the error message presence for the locked out user")
+    @Step("Check the error message presence of the locked out user")
     public boolean checkErrorMessagePresenceForLockedOutUser() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));     /*Explicit wait*/
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(errorMessage)));   /*Explicit wait*/
