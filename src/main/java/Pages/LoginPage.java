@@ -20,6 +20,15 @@ public class LoginPage {
     private final By loginButton = By.name("login-button");
     private final String expectedErrorText = "The password, or the email, you’ve entered is incorrect.";
 
+    public String getActualErrorMessageText() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));     /*Explicit wait*/
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(errorMessage)));   /*Explicit wait*/
+        return driver.findElement(errorMessage).getText();
+    }
+
+    public String getExpectedErrorMessageText() {
+        return expectedErrorText;
+    }
 
     public void fillEmail(String email) {
         driver.findElement(emailField).sendKeys(email);
@@ -45,14 +54,5 @@ public class LoginPage {
         return driver.findElement(errorMessage).isDisplayed();
     }
 
-    public String getActualErrorMessageText() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));     /*Explicit wait*/
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(errorMessage)));   /*Explicit wait*/
-        return driver.findElement(errorMessage).getText();
-    }
-
-    public String getExpectedErrorMessageText() {
-        return expectedErrorText;
-    }
 
 }

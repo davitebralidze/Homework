@@ -16,10 +16,6 @@ public class CartPage {
     private final By removeButtonOfSauceLabsBackPackInCart = By.xpath("//*[@id=\"remove-sauce-labs-backpack\"]");
 
 
-    public void clickOnRemoveButtonOfSauceLabsBackPackInCart() {
-        driver.findElement(removeButtonOfSauceLabsBackPackInCart).click();
-    }
-
     public String getExpectedNameOfTheProductSauceLabsBackPackInCart() {
         return expectedNameOfTheProductSauceLabsBackPackInCart;
     }
@@ -36,5 +32,8 @@ public class CartPage {
         }
     }
 
+    public void clickOnRemoveButtonOfSauceLabsBackPackInCart() {
+        driver.findElement(removeButtonOfSauceLabsBackPackInCart).click();
+    }
 
 }

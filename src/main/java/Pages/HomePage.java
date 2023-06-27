@@ -3,7 +3,6 @@ package Pages;
 import Data.HomePageData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -34,6 +33,15 @@ public class HomePage implements HomePageData {
         return burgerMenu;
     }
 
+    public ArrayList<String> getExpectedSortData() {
+        ArrayList<String> sortMenuData = new ArrayList<>();
+        sortMenuData.add(az);
+        sortMenuData.add(za);
+        sortMenuData.add(LoHi);
+        sortMenuData.add(HiLo);
+        return sortMenuData;
+    }
+
     public boolean checkBurgerMenuVisibility() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(burgerMenu)));
@@ -55,15 +63,6 @@ public class HomePage implements HomePageData {
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(sortMenuXPath)));
         return driver.findElement(sortMenuXPath).isDisplayed();
 
-    }
-
-    public ArrayList<String> getExpectedSortData() {
-        ArrayList<String> sortMenuData = new ArrayList<>();
-        sortMenuData.add(az);
-        sortMenuData.add(za);
-        sortMenuData.add(LoHi);
-        sortMenuData.add(HiLo);
-        return sortMenuData;
     }
 
     public ArrayList<String> getActualSortData() {
