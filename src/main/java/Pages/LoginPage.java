@@ -1,5 +1,6 @@
 package Pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,24 +31,29 @@ public class LoginPage {
         return expectedErrorText;
     }
 
+    @Step("Fill the email field with the valid/invalid email, according to the test case")
     public void fillEmail(String email) {
         driver.findElement(emailField).sendKeys(email);
     }
 
+    @Step("Fill the password field with the valid/invalid password, according to the test case")
     public void fillPassword(String password) {
         driver.findElement(passwordField).sendKeys(password);
     }
 
+    @Step("Click on the Log In button")
     public void clickLoginButton() {
         driver.findElement(loginButton).click();
     }
 
+    @Step("Check whether the login button is present or not")
     public boolean presenceOfLoginButton() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(loginButton)));
         return driver.findElement(loginButton).isDisplayed();
     }
 
+    @Step("Check the error message presence for the locked out user")
     public boolean checkErrorMessagePresenceForLockedOutUser() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));     /*Explicit wait*/
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(errorMessage)));   /*Explicit wait*/

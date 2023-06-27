@@ -1,6 +1,7 @@
 package Pages;
 
 import Data.HomePageData;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -42,29 +43,6 @@ public class HomePage implements HomePageData {
         return sortMenuData;
     }
 
-    public boolean checkBurgerMenuVisibility() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(burgerMenu)));
-        return driver.findElement(burgerMenu).isDisplayed();
-    }
-
-    public void clickOnBurgerMenu() {
-        driver.findElement(burgerMenu).click();
-    }
-
-    public void clickOnLogOutFromBurgerMenu() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(logOutButtonFromBurgerMenu)));
-        driver.findElement(logOutButtonFromBurgerMenu).click();
-    }
-
-    public boolean checkSortDropdownVisibility() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(sortMenuXPath)));
-        return driver.findElement(sortMenuXPath).isDisplayed();
-
-    }
-
     public ArrayList<String> getActualSortData() {
         ArrayList<String> actualSortData = new ArrayList<>();
         for (int i = 0; i < actualSortSize(); i++) {
@@ -74,10 +52,39 @@ public class HomePage implements HomePageData {
         return actualSortData;
     }
 
+    @Step("Check if the burger menu is present on the page (this can also be used to check whether the user is logged in or not)")
+    public boolean checkBurgerMenuVisibility() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(burgerMenu)));
+        return driver.findElement(burgerMenu).isDisplayed();
+    }
+
+    @Step("Click on the burger menu")
+    public void clickOnBurgerMenu() {
+        driver.findElement(burgerMenu).click();
+    }
+
+    @Step("Click on the log out button that is located in the burger menu")
+    public void clickOnLogOutFromBurgerMenu() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(logOutButtonFromBurgerMenu)));
+        driver.findElement(logOutButtonFromBurgerMenu).click();
+    }
+
+    @Step("Check whether the dropdown bar of the sort is present or not")
+    public boolean checkSortDropdownVisibility() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(sortMenuXPath)));
+        return driver.findElement(sortMenuXPath).isDisplayed();
+
+    }
+
+    @Step("Click on the cart icon")
     public void clickOnCartIcon() {
         driver.findElement(cartButton).click();
     }
 
+    @Step("Click on the add button of the Sauce Labs Backpack on the main page")
     public void addSauceLabsBackPackProductToCart() {
         driver.findElement(sauceLabsBackPackAddToCartButton).click();
     }
