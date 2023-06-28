@@ -21,7 +21,7 @@ public class HomePageTest implements LoginPageData, HomePageData {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 
-    @BeforeMethod
+    @BeforeMethod (description = "Opening the google chrome browser and logging in with valid credentials", groups = "Group2 For Presentation")
     public void setup() {
         driver = new ChromeDriver();
         driver.navigate().to(url);
@@ -32,36 +32,38 @@ public class HomePageTest implements LoginPageData, HomePageData {
         loginPage.clickLoginButton();
     }
 
-    @Test
+    @Test (description = "Checking the visibility of the sort dropdown menu", groups = "Group2 For Presentation")
     public void isSortMenuVisible() {
         HomePage homePage = new HomePage(driver);
         Assert.assertTrue(homePage.checkSortDropdownVisibility(), "The sort dropdown bar is not present");
     }
 
-    @Test
+    @Test (description = "Checking the size of the sort dropdown menu", groups = "Group2 For Presentation")
     public void sortDropdownSize() {
         HomePage homePage = new HomePage(driver);
         Assert.assertEquals(homePage.actualSortSize(), expectedNumberOfElementsInSort);
     }
 
-    @Test
+    @Test (description = "Checking the elements of the sort dropdown menu", groups = "Group2 For Presentation")
     public void sortDropdownElements() {
         HomePage homePage = new HomePage(driver);
         Assert.assertEquals(homePage.getActualSortData(), homePage.getExpectedSortData());
     }
 
-    @Test
-    public void isProductAddedToCart() {
+    @Test (description = "Checking whether the added product count comes in accordance with the indicator itself", groups = "Group2 For Presentation")
+    public void doesCartShowTheCorrectCountOfProducts() {
         HomePage homePage = new HomePage(driver);
-        CartPage cartPage = new CartPage(driver);
+        homePage.addSauceLabsBikeLightToCart();
+        homePage.addSauceLabsBoltTShirt();
         homePage.addSauceLabsBackPackProductToCart();
-        homePage.clickOnCartIcon();
 
-        Assert.assertEquals(cartPage.getActualNameOfTheProductSauceLabsBackPackInCart(), cartPage.getExpectedNameOfTheProductSauceLabsBackPackInCart());
+        int expectedIntegerOfTheIndicator = 3;
+
+        Assert.assertEquals(homePage.getItemCountIndicatorTextOfTheCartIcon(), expectedIntegerOfTheIndicator);
 
     }
 
-    @Test
+    @Test (description = "Checking the log out function", groups = "Group2 For Presentation")
     public void canUserLogOutFromBurgerMenu() {
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = new LoginPage(driver);
@@ -71,7 +73,7 @@ public class HomePageTest implements LoginPageData, HomePageData {
         Assert.assertTrue(loginPage.presenceOfLoginButton());
     }
 
-    @AfterMethod
+    @AfterMethod (description = "Closing the chrome browser and taking the screenshot", groups = "Group2 For Presentation")
     public void finish() {
         takeScreenshot();
         driver.quit();

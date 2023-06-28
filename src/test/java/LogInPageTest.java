@@ -22,7 +22,7 @@ public class LogInPageTest implements LoginPageData {
     }
 
 
-    @BeforeMethod(description = "Opening the chrome browser")
+    @BeforeMethod (description = "Opening the google chrome browser", groups = "Group1 For Presentation")
     public void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -31,7 +31,7 @@ public class LogInPageTest implements LoginPageData {
 
     }
 
-    @Test
+    @Test (description = "Checking the process of logging in with valid credentials", groups = "Group1 For Presentation")
     public void loginWithValidCredentials() {
 
         LoginPage loginPage = new LoginPage(driver);
@@ -45,7 +45,7 @@ public class LogInPageTest implements LoginPageData {
 
     }
 
-    @Test
+    @Test (description = "Checking the error message presence while logging in with locked out user", groups = "Group1 For Presentation")
     public void loginWithLockedOutUser() {
 
         LoginPage loginPage = new LoginPage(driver);
@@ -58,7 +58,7 @@ public class LogInPageTest implements LoginPageData {
 
     }
 
-    @Test
+    @Test (description = "Checking the error message while logging in with invalid credentials", groups = "Group1 For Presentation")
     public void checkTheErrorMessageInCaseOfInvalidUser() {
         LoginPage loginPage = new LoginPage(driver);
 
@@ -69,7 +69,7 @@ public class LogInPageTest implements LoginPageData {
         Assert.assertEquals(loginPage.getActualErrorMessageText(), loginPage.getExpectedErrorMessageText());
     }
 
-    @AfterMethod
+    @AfterMethod (description = "Closing the google chrome browser and taking a screenshot", groups = "Group1 For Presentation")
     public void finish() {
         takeScreenshot();
         driver.quit();

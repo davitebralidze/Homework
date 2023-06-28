@@ -23,17 +23,20 @@ public class HomePage implements HomePageData {
     private final By sortMenuXPath = By.xpath("//*[@id=\"header_container\"]/div[2]/div/span/select");
     private final By cartButton = By.xpath("//*[@id=\"shopping_cart_container\"]/a");
     private final By sauceLabsBackPackAddToCartButton = By.xpath("//*[@id=\"add-to-cart-sauce-labs-backpack\"]");
+    private final By sauceLabsBikeLightAddToCartButton = By.xpath("//*[@id=\"add-to-cart-sauce-labs-bike-light\"]");
+    private final By sauceLabsBoltTShirtAddToCartButton = By.xpath("//*[@id=\"add-to-cart-sauce-labs-bolt-t-shirt\"]");
     private final By logOutButtonFromBurgerMenu = By.xpath("//*[@id=\"logout_sidebar_link\"]");
+    private final By numberOfItemsInTheCartIndicator = By.className("shopping_cart_badge");
 
+
+    @Step("Check the actual size of the sort dropdown")
     public int actualSortSize() {
         Select selectOptions = new Select(driver.findElement(sortMenuXPath));
         return selectOptions.getOptions().size();
     }
 
-    public By getBurgerMenu() {
-        return burgerMenu;
-    }
 
+    @Step("Check the expected sort data")
     public ArrayList<String> getExpectedSortData() {
         ArrayList<String> sortMenuData = new ArrayList<>();
         sortMenuData.add(az);
@@ -43,6 +46,7 @@ public class HomePage implements HomePageData {
         return sortMenuData;
     }
 
+    @Step("Check the actual sort data")
     public ArrayList<String> getActualSortData() {
         ArrayList<String> actualSortData = new ArrayList<>();
         for (int i = 0; i < actualSortSize(); i++) {
@@ -87,6 +91,21 @@ public class HomePage implements HomePageData {
     @Step("Click on the add button of the Sauce Labs Backpack on the main page")
     public void addSauceLabsBackPackProductToCart() {
         driver.findElement(sauceLabsBackPackAddToCartButton).click();
+    }
+
+    @Step("Click on the add button of the Sauce Labs Bike Light on the main page")
+    public void addSauceLabsBikeLightToCart() {
+        driver.findElement(sauceLabsBikeLightAddToCartButton).click();
+    }
+
+    @Step("Click on the add button of the Sauce Labs Blot T-Shirt on the main page")
+    public void addSauceLabsBoltTShirt() {
+        driver.findElement(sauceLabsBoltTShirtAddToCartButton).click();
+    }
+
+    @Step("Checking the number that is shown by the item count indicator of the cart icon")
+    public int getItemCountIndicatorTextOfTheCartIcon() {
+        return Integer.parseInt(driver.findElement(numberOfItemsInTheCartIndicator).getText());
     }
 
 }

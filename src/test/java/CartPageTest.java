@@ -21,7 +21,7 @@ public class CartPageTest implements LoginPageData, HomePageData {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 
-    @BeforeMethod
+    @BeforeMethod (description = "Opening the google chrome browser and logging in with valid credentials", groups = "Group3 For Presentation")
     public void setup() {
         driver = new ChromeDriver();
         driver.navigate().to(url);
@@ -32,7 +32,7 @@ public class CartPageTest implements LoginPageData, HomePageData {
         loginPage.clickLoginButton();
     }
 
-    @Test
+    @Test (description = "Checking whether the selected product is added to the cart", groups = "Group3 For Presentation")
     public void isProductAddedToTheCart() {
         HomePage homePage = new HomePage(driver);
         CartPage cartPage = new CartPage(driver);
@@ -44,7 +44,7 @@ public class CartPageTest implements LoginPageData, HomePageData {
 
     }
 
-    @Test
+    @Test (description = "Checking whether the selected product is removed from the cart", groups = "Group3 For Presentation")
     public void isProductRemovedFromTheCart() {
         HomePage homePage = new HomePage(driver);
         CartPage cartPage = new CartPage(driver);
@@ -56,7 +56,7 @@ public class CartPageTest implements LoginPageData, HomePageData {
         Assert.assertFalse(cartPage.checkPresenceOfSauceLabsBackPackInCart());
     }
 
-    @AfterMethod
+    @AfterMethod (description = "Closing the chrome browser and taking the screenshot", groups = "Group3 For Presentation")
     public void finish() {
         takeScreenshot();
         driver.quit();
