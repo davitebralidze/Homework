@@ -23,7 +23,8 @@ public class CartPageTest implements LoginPageData, HomePageData {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 
-    @BeforeMethod (description = "Opening the google chrome browser and logging in with valid credentials", groups = "Group3 For Presentation")
+    @BeforeMethod(description = "Opening the google chrome browser and logging in with valid credentials", groups = {"Group3 For Presentation",
+            "This group is just to show that we can give 2 different groups to 1 test"})
     public void setup() {
         driver = new ChromeDriver();
         driver.navigate().to(url);
@@ -34,7 +35,7 @@ public class CartPageTest implements LoginPageData, HomePageData {
         loginPage.clickLoginButton();
     }
 
-    @Test (description = "Checking whether the selected product is added to the cart", groups = "Group3 For Presentation")
+    @Test(description = "Checking whether the selected product is added to the cart", groups = "Group3 For Presentation")
     @Severity(SeverityLevel.CRITICAL)
     public void isProductAddedToTheCart() {
         HomePage homePage = new HomePage(driver);
@@ -47,7 +48,7 @@ public class CartPageTest implements LoginPageData, HomePageData {
 
     }
 
-    @Test (description = "Checking whether the selected product is removed from the cart", groups = "Group3 For Presentation")
+    @Test(description = "Checking whether the selected product is removed from the cart", groups = "Group3 For Presentation")
     @Severity(SeverityLevel.CRITICAL)
     public void isProductRemovedFromTheCart() {
         HomePage homePage = new HomePage(driver);
@@ -60,7 +61,7 @@ public class CartPageTest implements LoginPageData, HomePageData {
         Assert.assertFalse(cartPage.checkPresenceOfSauceLabsBackPackInCart());
     }
 
-    @AfterMethod (description = "Closing the chrome browser and taking the screenshot", groups = "Group3 For Presentation")
+    @AfterMethod(description = "Closing the chrome browser and taking the screenshot", groups = "Group3 For Presentation")
     public void finish() {
         takeScreenshot();
         driver.quit();
