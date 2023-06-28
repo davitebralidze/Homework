@@ -4,6 +4,8 @@ import Pages.CartPage;
 import Pages.HomePage;
 import Pages.LoginPage;
 import io.qameta.allure.Attachment;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -33,6 +35,7 @@ public class CartPageTest implements LoginPageData, HomePageData {
     }
 
     @Test (description = "Checking whether the selected product is added to the cart", groups = "Group3 For Presentation")
+    @Severity(SeverityLevel.CRITICAL)
     public void isProductAddedToTheCart() {
         HomePage homePage = new HomePage(driver);
         CartPage cartPage = new CartPage(driver);
@@ -45,6 +48,7 @@ public class CartPageTest implements LoginPageData, HomePageData {
     }
 
     @Test (description = "Checking whether the selected product is removed from the cart", groups = "Group3 For Presentation")
+    @Severity(SeverityLevel.CRITICAL)
     public void isProductRemovedFromTheCart() {
         HomePage homePage = new HomePage(driver);
         CartPage cartPage = new CartPage(driver);

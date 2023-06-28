@@ -3,6 +3,8 @@ import Pages.HomePage;
 import Pages.LoginPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Attachment;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -31,7 +33,8 @@ public class LogInPageTest implements LoginPageData {
 
     }
 
-    @Test (description = "Checking the process of logging in with valid credentials", groups = "Group1 For Presentation")
+    @Test (description = "Checking the process of logging in with valid credentials", groups = "Group1 For Presentation", priority = 1)
+    @Severity(SeverityLevel.BLOCKER)
     public void loginWithValidCredentials() {
 
         LoginPage loginPage = new LoginPage(driver);
@@ -45,7 +48,8 @@ public class LogInPageTest implements LoginPageData {
 
     }
 
-    @Test (description = "Checking the error message presence while logging in with locked out user", groups = "Group1 For Presentation")
+    @Test (description = "Checking the error message presence while logging in with locked out user", groups = "Group1 For Presentation", priority = 3)
+    @Severity(SeverityLevel.CRITICAL)
     public void loginWithLockedOutUser() {
 
         LoginPage loginPage = new LoginPage(driver);
@@ -58,7 +62,8 @@ public class LogInPageTest implements LoginPageData {
 
     }
 
-    @Test (description = "Checking the error message while logging in with invalid credentials", groups = "Group1 For Presentation")
+    @Test (description = "Checking the error message while logging in with invalid credentials", groups = "Group1 For Presentation", priority = 2)
+    @Severity(SeverityLevel.CRITICAL)
     public void checkTheErrorMessageInCaseOfInvalidUser() {
         LoginPage loginPage = new LoginPage(driver);
 
