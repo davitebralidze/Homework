@@ -16,26 +16,4 @@
         </classes>
     </test>
 
-<!--    <test name="Homepage test">-->
-<!--        <groups>-->
-<!--            <run>-->
-<!--                <include name="Group2 For Presentation"/>-->
-<!--            </run>-->
-<!--        </groups>-->
-<!--        <classes>-->
-<!--            <class name="HomePageTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-
-<!--    <test name="Cart page test">-->
-<!--        <groups>-->
-<!--            <run>-->
-<!--                <include name="Group3 For Presentation"/>-->
-<!--            </run>-->
-<!--        </groups>-->
-<!--        <classes>-->
-<!--            <class name="CartPageTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-
 </suite>
