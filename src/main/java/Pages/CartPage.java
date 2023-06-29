@@ -26,7 +26,7 @@ public class CartPage {
         return driver.findElement(sauceLabsBackPackInCart).getText();
     }
 
-    @Step("Check if the Sauce Labs Backpack is added in the cart")
+    @Step("Check the presence of the Sauce Labs Backpack in the cart")
     public boolean checkPresenceOfSauceLabsBackPackInCart() {
         try {
             return driver.findElement(sauceLabsBackPackInCart).isDisplayed();
