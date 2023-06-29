@@ -13,20 +13,9 @@ public class CartPage {
     }
 
     private final By sauceLabsBackPackInCart = By.xpath("//*[@id=\"item_4_title_link\"]/div");
-    private final String expectedNameOfTheProductSauceLabsBackPackInCart = "Sauce Labs Backpack";
     private final By removeButtonOfSauceLabsBackPackInCart = By.xpath("//*[@id=\"remove-sauce-labs-backpack\"]");
 
-
-    public String getExpectedNameOfTheProductSauceLabsBackPackInCart() {
-        return expectedNameOfTheProductSauceLabsBackPackInCart;
-    }
-
-
-    public String getActualNameOfTheProductSauceLabsBackPackInCart() {
-        return driver.findElement(sauceLabsBackPackInCart).getText();
-    }
-
-    @Step("Check the presence of the Sauce Labs Backpack in the cart")
+    @Step("Check if the Sauce Labs Backpack is added in the cart")
     public boolean checkPresenceOfSauceLabsBackPackInCart() {
         try {
             return driver.findElement(sauceLabsBackPackInCart).isDisplayed();

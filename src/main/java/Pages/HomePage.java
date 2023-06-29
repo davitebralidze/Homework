@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class HomePage implements HomePageData {
 
@@ -56,11 +57,10 @@ public class HomePage implements HomePageData {
         return actualSortData;
     }
 
-    @Step("Check if the burger menu is present on the page (this can also be used to check whether the user is logged in or not)")
-    public boolean checkBurgerMenuVisibility() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(burgerMenu)));
-        return driver.findElement(burgerMenu).isDisplayed();
+    @Step("Check whether the current URL is the URL of the homepage")
+    public boolean checkIfTheCurrentURLIsHomePageURL() {
+        String expectedURL = "https://www.saucedemo.com/inventory.html";
+        return Objects.equals(driver.getCurrentUrl(), expectedURL);
     }
 
     @Step("Click on the burger menu")
