@@ -1,6 +1,5 @@
 import Data.HomePageData;
 import Data.LoginPageData;
-import Pages.CartPage;
 import Pages.HomePage;
 import Pages.LoginPage;
 import io.qameta.allure.Attachment;
@@ -23,7 +22,7 @@ public class HomePageTest implements LoginPageData, HomePageData {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 
-    @BeforeMethod (description = "Opening the google chrome browser and logging in with valid credentials", groups = "Group2 For Presentation")
+    @BeforeMethod(description = "Opening the google chrome browser and logging in with valid credentials", groups = "Group2 For Presentation")
     public void setup() {
         driver = new ChromeDriver();
         driver.navigate().to(url);
@@ -34,28 +33,28 @@ public class HomePageTest implements LoginPageData, HomePageData {
         loginPage.clickLoginButton();
     }
 
-    @Test (description = "Checking the visibility of the sort dropdown menu", groups = "Group2 For Presentation", priority = 5)
+    @Test(description = "Checking the visibility of the sort dropdown menu", groups = "Group2 For Presentation", priority = 5)
     @Severity(SeverityLevel.MINOR)
     public void isSortMenuVisible() {
         HomePage homePage = new HomePage(driver);
         Assert.assertTrue(homePage.checkSortDropdownVisibility(), "The sort dropdown bar is not present");
     }
 
-    @Test (description = "Checking the size of the sort dropdown menu", groups = "Group2 For Presentation", priority = 3)
+    @Test(description = "Checking the size of the sort dropdown menu", groups = "Group2 For Presentation", priority = 3)
     @Severity(SeverityLevel.MINOR)
     public void sortDropdownSize() {
         HomePage homePage = new HomePage(driver);
         Assert.assertEquals(homePage.actualSortSize(), expectedNumberOfElementsInSort);
     }
 
-    @Test (description = "Checking the elements of the sort dropdown menu", groups = "Group2 For Presentation", priority = 1)
+    @Test(description = "Checking the elements of the sort dropdown menu", groups = "Group2 For Presentation", priority = 1)
     @Severity(SeverityLevel.MINOR)
     public void sortDropdownElements() {
         HomePage homePage = new HomePage(driver);
         Assert.assertEquals(homePage.getActualSortData(), homePage.getExpectedSortData());
     }
 
-    @Test (description = "Checking whether the added product count comes in accordance with the indicator itself", groups = "Group2 For Presentation", priority = 2)
+    @Test(description = "Checking whether the added product count comes in accordance with the indicator itself", groups = "Group2 For Presentation", priority = 2)
     @Severity(SeverityLevel.CRITICAL)
     public void doesCartShowTheCorrectCountOfProducts() {
         HomePage homePage = new HomePage(driver);
@@ -69,7 +68,7 @@ public class HomePageTest implements LoginPageData, HomePageData {
 
     }
 
-    @Test (description = "Checking the log out function", groups = "Group2 For Presentation", priority = 4)
+    @Test(description = "Checking the log out function", groups = "Group2 For Presentation", priority = 4)
     @Severity(SeverityLevel.CRITICAL)
     public void canUserLogOutFromBurgerMenu() {
         HomePage homePage = new HomePage(driver);
@@ -80,7 +79,7 @@ public class HomePageTest implements LoginPageData, HomePageData {
         Assert.assertTrue(loginPage.presenceOfLoginButton());
     }
 
-    @AfterMethod (description = "Closing the chrome browser and taking the screenshot", groups = "Group2 For Presentation")
+    @AfterMethod(description = "Closing the chrome browser and taking the screenshot", groups = "Group2 For Presentation")
     public void finish() {
         takeScreenshot();
         driver.quit();

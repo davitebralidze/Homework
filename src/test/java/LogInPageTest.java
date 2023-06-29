@@ -24,7 +24,7 @@ public class LogInPageTest implements LoginPageData {
     }
 
 
-    @BeforeMethod (description = "Opening the google chrome browser", groups = "Group1 For Presentation")
+    @BeforeMethod(description = "Opening the google chrome browser", groups = "Group1 For Presentation")
     public void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -33,7 +33,7 @@ public class LogInPageTest implements LoginPageData {
 
     }
 
-    @Test (description = "Checking the process of logging in with valid credentials", groups = "Group1 For Presentation", priority = 1)
+    @Test(description = "Checking the process of logging in with valid credentials", groups = "Group1 For Presentation", priority = 1)
     @Severity(SeverityLevel.BLOCKER)
     public void loginWithValidCredentials() {
 
@@ -44,11 +44,11 @@ public class LogInPageTest implements LoginPageData {
         loginPage.fillPassword(password);
         loginPage.clickLoginButton();
 
-        Assert.assertTrue(homePage.checkBurgerMenuVisibility(), "The process of login failed");
+        Assert.assertTrue(homePage.checkIfTheCurrentURLIsHomePageURL(), "The process of login failed");
 
     }
 
-    @Test (description = "Checking the error message presence while logging in with locked out user", groups = "Group1 For Presentation", priority = 3)
+    @Test(description = "Checking the error message presence while logging in with locked out user", groups = "Group1 For Presentation", priority = 3)
     @Severity(SeverityLevel.CRITICAL)
     public void loginWithLockedOutUser() {
 
@@ -62,7 +62,7 @@ public class LogInPageTest implements LoginPageData {
 
     }
 
-    @Test (description = "Checking the error message while logging in with invalid credentials", groups = "Group1 For Presentation", priority = 2)
+    @Test(description = "Checking the error message while logging in with invalid credentials", groups = "Group1 For Presentation", priority = 2)
     @Severity(SeverityLevel.CRITICAL)
     public void checkTheErrorMessageInCaseOfInvalidUser() {
         LoginPage loginPage = new LoginPage(driver);
@@ -74,7 +74,7 @@ public class LogInPageTest implements LoginPageData {
         Assert.assertEquals(loginPage.getActualErrorMessageText(), loginPage.getExpectedErrorMessageText());
     }
 
-    @AfterMethod (description = "Closing the google chrome browser and taking a screenshot", groups = "Group1 For Presentation")
+    @AfterMethod(description = "Closing the google chrome browser and taking a screenshot", groups = "Group1 For Presentation")
     public void finish() {
         takeScreenshot();
         driver.quit();

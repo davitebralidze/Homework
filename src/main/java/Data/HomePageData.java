@@ -1,7 +1,5 @@
 package Data;
 
-import java.util.ArrayList;
-
 public interface HomePageData {
     int expectedNumberOfElementsInSort = 4;
     String az = "Name (A to Z)";
