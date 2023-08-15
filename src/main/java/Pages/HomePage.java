@@ -32,7 +32,7 @@ public class HomePage implements HomePageData {
     private final int expectedNumberOfTheAddedProducts = 3;
 
     @Step("The expected number of the Added products (we added 3 products in this case")
-    public int getExpectedNumberOfTheAddedProducts () {
+    public int getExpectedNumberOfTheAddedProducts() {
         return expectedNumberOfTheAddedProducts;
     }
 
