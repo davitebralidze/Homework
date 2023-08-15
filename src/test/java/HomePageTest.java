@@ -62,9 +62,7 @@ public class HomePageTest implements LoginPageData, HomePageData {
         homePage.addSauceLabsBoltTShirt();
         homePage.addSauceLabsBackPackProductToCart();
 
-        int expectedIntegerOfTheIndicator = 3;
-
-        Assert.assertEquals(homePage.getItemCountIndicatorTextOfTheCartIcon(), expectedIntegerOfTheIndicator);
+        Assert.assertEquals(homePage.getItemCountIndicatorTextOfTheCartIcon(), homePage.getExpectedNumberOfTheAddedProducts());
 
     }
 

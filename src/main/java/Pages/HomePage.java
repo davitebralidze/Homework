@@ -29,6 +29,12 @@ public class HomePage implements HomePageData {
     private final By logOutButtonFromBurgerMenu = By.xpath("//*[@id=\"logout_sidebar_link\"]");
     private final By numberOfItemsInTheCartIndicator = By.className("shopping_cart_badge");
 
+    private final int expectedNumberOfTheAddedProducts = 3;
+
+    @Step("The expected number of the Added products (we added 3 products in this case")
+    public int getExpectedNumberOfTheAddedProducts () {
+        return expectedNumberOfTheAddedProducts;
+    }
 
     @Step("Check the actual size of the sort dropdown")
     public int actualSortSize() {
