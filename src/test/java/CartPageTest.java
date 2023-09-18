@@ -18,11 +18,6 @@ import org.testng.annotations.Test;
 public class CartPageTest implements LoginPageData, HomePageData {
     WebDriver driver;
 
-    @Attachment(value = "Screenshot", type = "image/png")
-    public byte[] takeScreenshot() {
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-    }
-
     @BeforeMethod(description = "Opening the google chrome browser and logging in with valid credentials", groups = {"Group3 For Presentation",
             "This group is just to show that we can give 2 different groups to 1 test"})
     public void setup() {
@@ -63,7 +58,6 @@ public class CartPageTest implements LoginPageData, HomePageData {
 
     @AfterMethod(description = "Closing the chrome browser and taking the screenshot", groups = "Group3 For Presentation")
     public void finish() {
-        takeScreenshot();
         driver.quit();
     }
 

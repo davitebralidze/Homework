@@ -17,10 +17,6 @@ import org.testng.annotations.Test;
 public class HomePageTest implements LoginPageData, HomePageData {
     WebDriver driver;
 
-    @Attachment(value = "Screenshot", type = "image/png")
-    public byte[] takeScreenshot() {
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-    }
 
     @BeforeMethod(description = "Opening the google chrome browser and logging in with valid credentials", groups = "Group2 For Presentation")
     public void setup() {
@@ -79,7 +75,6 @@ public class HomePageTest implements LoginPageData, HomePageData {
 
     @AfterMethod(description = "Closing the chrome browser and taking the screenshot", groups = "Group2 For Presentation")
     public void finish() {
-        takeScreenshot();
         driver.quit();
     }
 

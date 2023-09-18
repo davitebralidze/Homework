@@ -26,7 +26,6 @@ public class LogInPageTest implements LoginPageData {
 
     @BeforeMethod(description = "Opening the google chrome browser", groups = "Group1 For Presentation")
     public void setup() {
-        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.navigate().to(url);
         driver.manage().window().maximize();
